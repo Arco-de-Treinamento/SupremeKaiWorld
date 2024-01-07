@@ -1,0 +1,38 @@
+# Miscellaneous
+*.class
+*.lock
+*.log
+*.pyc
+*.swp
+.atom/
+.buildlog/
+.history
+.svn/
+**/.directory
+**/Thumbs.db
+**/.DS_Store
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Visual Studio Code
+.classpath
+.project
+.settings/
+.vscode/
+
+# pub
+.pub-cache/
+.pub/
+**/pubspec.lock
+
+# Flutter/Dart
+**/ios/Flutter/.last_build_id
+**/flutter_export_environment.sh
+**/doc/api/
+.dart_tool/
+build/
+**/packages
