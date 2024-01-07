@@ -1,0 +1,1 @@
+ /home/manoelfreitas/SupremeKaiWorld/.dart_tool/flutter_build/4bb90a3b87f2715b77cd66f74e1410d3/native_assets.yaml: 
