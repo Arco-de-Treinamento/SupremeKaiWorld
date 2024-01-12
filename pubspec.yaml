@@ -68,6 +68,11 @@ flutter:
     - assets/images/tiled/tilesets/
     - assets/images/facesets/
     - assets/images/actor/
+    - assets/images/actor/cave_girl/
+    - assets/images/actor/samurai/
+    - assets/images/actor/inspector/
+    - assets/images/actor/princess/
+    - assets/images/actor/ninja/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -140,15 +140,15 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"TilesetFloor.json"
+         "source":"tileset_floor.json"
         }, 
         {
          "firstgid":573,
-         "source":"TilesetNature.json"
+         "source":"tileset_nature.json"
         }, 
         {
          "firstgid":1077,
-         "source":"TilesetFloorDetail.json"
+         "source":"tileset_floor_detail.json"
         }],
  "tilewidth":16,
  "type":"map",
