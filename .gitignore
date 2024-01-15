@@ -36,3 +36,8 @@
 .dart_tool/
 build/
 **/packages
+
+#Tiled
+*.tmx
+*.tiled-project
+*.tiled-session
