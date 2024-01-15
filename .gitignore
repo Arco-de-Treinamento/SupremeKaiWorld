@@ -41,3 +41,7 @@ build/
 *.tmx
 *.tiled-project
 *.tiled-session
+
+#Linux files
+linux/
+.metadata

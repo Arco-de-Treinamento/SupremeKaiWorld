@@ -35,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return BonfireWidget(
+      showCollisionArea: true,
       joystick: Joystick(
         directional: JoystickDirectional(),
       ), // required
@@ -42,7 +43,14 @@ class _MyHomePageState extends State<MyHomePage> {
         //forceTileSize: Vector2(64, 64),
         TiledReader.asset('tiled/map.json'),
       ),
-      player: Actor(Vector2(1, 1), actorType: 'ninja'),
+      player: Actor(Vector2(400, 480), actorType: 'ninja'),
+      cameraConfig:CameraConfig(
+        moveOnlyMapArea: true, 
+        movementWindow: Vector2(50,50),
+        speed: 1.0,
+        zoom:  2.0,
+        startFollowPlayer: true,
+      ),
     );
   }
 }
