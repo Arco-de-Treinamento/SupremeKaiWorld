@@ -6,15 +6,15 @@ class ActorSpriteSheet {
   ActorSpriteSheet({required this.actorPath});
 
   SimpleDirectionAnimation actorAnimations() => SimpleDirectionAnimation(
-    idleUp: idleUp(),
-    idleDown: idleDown(),
-    idleLeft: idleLeft(),
-    runUp: runUp(),
-    idleRight: idleRight(),
-    runDown: runDown(),
-    runLeft: runLeft(),
-    runRight: runRight(),
-  );
+        idleUp: idleUp(),
+        idleDown: idleDown(),
+        idleLeft: idleLeft(),
+        runUp: runUp(),
+        idleRight: idleRight(),
+        runDown: runDown(),
+        runLeft: runLeft(),
+        runRight: runRight(),
+      );
 
   Future<SpriteAnimation> idleUp() => SpriteAnimation.load(
         "actor/$actorPath/idle_back.png",
@@ -91,7 +91,7 @@ class ActorSpriteSheet {
   Future<SpriteAnimation> item() => SpriteAnimation.load(
         "actor/$actorPath/item.png",
         SpriteAnimationData.sequenced(
-          amount: 1,
+          amount: 4,
           stepTime: 0.1,
           textureSize: Vector2(16, 16),
         ),
