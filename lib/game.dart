@@ -3,6 +3,10 @@ import 'package:bonfire/bonfire.dart';
 import 'package:supreme_kai_world/actor/actor.dart';
 
 class Game extends StatelessWidget {
+  final String actorType;
+
+  const Game({super.key, required this.actorType});
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -16,7 +20,7 @@ class Game extends StatelessWidget {
             map: WorldMapByTiled(
               TiledReader.asset('tiled/map.json'),
             ),
-            player: Actor(Vector2(400, 480), actorType: 'princess'),
+            player: Actor(Vector2(400, 480), actorType: actorType),
             cameraConfig:CameraConfig(
               moveOnlyMapArea: true, 
               movementWindow: Vector2(36,36),
