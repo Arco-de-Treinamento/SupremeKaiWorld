@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bonfire/bonfire.dart';
-import 'package:supreme_kai_world/actor_selection.dart';
+import 'package:supreme_kai_world/actor_selection_screen.dart';
 
 void main() {
   runApp(const MyApp());
