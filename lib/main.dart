@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Supreme Kai World',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFFFF6600)),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF161D1C)),
         useMaterial3: true,
       ),
       home: ActorSelection(),
