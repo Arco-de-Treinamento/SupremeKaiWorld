@@ -46,6 +46,8 @@ class _ActorCardState extends State<ActorCard> with SingleTickerProviderStateMix
         color: Colors.transparent,
         elevation: 0,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
               height: 128,
@@ -70,7 +72,7 @@ class _ActorCardState extends State<ActorCard> with SingleTickerProviderStateMix
               (widget.actor.replaceAll('_', ' ')).toUpperCase(),
               style: const TextStyle(
                 fontFamily: 'PixelifySans',
-                fontSize: 26,
+                fontSize: 22,
                 fontWeight: FontWeight.w600,
                 color: Color(0xFF141B1B),
               ),

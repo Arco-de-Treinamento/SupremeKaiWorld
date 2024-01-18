@@ -21,74 +21,27 @@ class _ActorSelectionState extends State<ActorSelection> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF686557),
-      appBar: AppBar(
-        title: const Text('Supreme Kai World'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.code),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      Game(actorType: _actors[_currentActorIndex]),
-                ),
-              );
-            },
-          ),
+      body: Stack(
+        children: [
+          _titleScreen(),
+          _gitHubRepo(context),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('assets/images/facesets/cave_girl.png'),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  icon: Icon(Icons.arrow_back),
-                  onPressed: () {
-                    setState(() {
-                      if (_currentActorIndex > 0) {
-                        _currentActorIndex--;
-                      }
-                    });
-                  },
-                ),
-                ActorCard(actor: _actors[_currentActorIndex], context: context),
-                IconButton(
-                  icon: Icon(Icons.arrow_forward),
-                  onPressed: () {
-                    setState(() {
-                      if (_currentActorIndex < _actors.length - 1) {
-                        _currentActorIndex++;
-                      }
-                    });
-                  },
-                ),
-              ],
-            ),
-            ElevatedButton(
-              child: Text('Play'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        Game(actorType: _actors[_currentActorIndex]),
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
-      ),
       bottomNavigationBar: BottomAppBar(
+        color: Colors.transparent,
+        elevation: 0,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Feito por JosManoel'),
+            const Text(
+              'Feito por JosManoel',
+              style: TextStyle(
+                fontFamily: 'PixelifySans',
+                fontSize: 26,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF141B1B),
+              ),
+            ),
             IconButton(
               icon: Icon(Icons.info),
               onPressed: () {
@@ -102,6 +55,129 @@ class _ActorSelectionState extends State<ActorSelection> {
               },
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Container _titleScreen() {
+    return Container(
+      margin: EdgeInsets.all(28),
+      child: Center(
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            if (constraints.maxWidth > 600) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _gameTitle(context),
+                  SizedBox(width: 36),
+                  _selectActor(context),
+                ],
+              );
+            }else{
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _gameTitle(context),
+                  _selectActor(context),
+                  SizedBox(height: 8),
+                ],
+              );
+            }
+          }
+        ),
+      ),
+    );
+  }
+
+  Container _gameTitle(BuildContext context) {
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 512,
+            child: Image.asset(
+              'assets/images/logo.png',
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.none,
+            ),
+          ),
+          SizedBox(height: 36),
+          ElevatedButton(
+            child: Text('Play'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      Game(actorType: _actors[_currentActorIndex]),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container _selectActor(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              setState(() {
+                if (_currentActorIndex > 0) {
+                  _currentActorIndex--;
+                }
+              });
+            },
+          ),
+          ActorCard(actor: _actors[_currentActorIndex], context: context),
+          IconButton(
+            icon: const Icon(Icons.arrow_forward),
+            onPressed: () {
+              setState(() {
+                if (_currentActorIndex < _actors.length - 1) {
+                  _currentActorIndex++;
+                }
+              });
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Positioned _gitHubRepo(BuildContext context) {
+    return Positioned(
+      top: 0,
+      right: 0,
+      child: InkWell(
+        hoverColor: Colors.transparent,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  Game(actorType: _actors[_currentActorIndex]),
+            ),
+          );
+        },
+        child: SizedBox(
+          height: 64,
+          width: 64,
+          child: Image.asset(
+            'assets/images/items/github.png',
+            fit: BoxFit.cover,
+            filterQuality: FilterQuality.none,
+          ),
         ),
       ),
     );
