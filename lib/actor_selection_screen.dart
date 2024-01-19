@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:supreme_kai_world/actor/actor_card.dart';
 import 'package:supreme_kai_world/game.dart';
+import 'package:supreme_kai_world/util/github_button.dart';
 import 'package:supreme_kai_world/util/pixel_button.dart';
+import 'package:supreme_kai_world/about_screen.dart';
 
 class ActorSelection extends StatefulWidget {
   @override
@@ -25,7 +27,7 @@ class _ActorSelectionState extends State<ActorSelection> {
       body: Stack(
         children: [
           _titleScreen(),
-          _gitHubRepo(context),
+          GitHubButton(context: context),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -44,7 +46,7 @@ class _ActorSelectionState extends State<ActorSelection> {
               ),
             ),
             PixelButton(
-              text: 'about', 
+              text: 'about',
               backgroundColor: Colors.black45,
               fontColor: Colors.grey,
               fontSize: 16.0,
@@ -54,8 +56,7 @@ class _ActorSelectionState extends State<ActorSelection> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        Game(actorType: _actors[_currentActorIndex]),
+                    builder: (context) => AboutGame(),
                   ),
                 );
               },
@@ -158,34 +159,6 @@ class _ActorSelectionState extends State<ActorSelection> {
             },
           ),
         ],
-      ),
-    );
-  }
-
-  Positioned _gitHubRepo(BuildContext context) {
-    return Positioned(
-      top: 0,
-      right: 0,
-      child: InkWell(
-        hoverColor: Colors.transparent,
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  Game(actorType: _actors[_currentActorIndex]),
-            ),
-          );
-        },
-        child: SizedBox(
-          height: 64,
-          width: 64,
-          child: Image.asset(
-            'assets/images/items/github.png',
-            fit: BoxFit.cover,
-            filterQuality: FilterQuality.none,
-          ),
-        ),
       ),
     );
   }
