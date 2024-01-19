@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supreme_kai_world/actor/actor_card.dart';
 import 'package:supreme_kai_world/game.dart';
+import 'package:supreme_kai_world/util/pixel_button.dart';
 
 class ActorSelection extends StatefulWidget {
   @override
@@ -37,14 +38,19 @@ class _ActorSelectionState extends State<ActorSelection> {
               'Feito por JosManoel',
               style: TextStyle(
                 fontFamily: 'PixelifySans',
-                fontSize: 26,
-                fontWeight: FontWeight.w600,
-                color: Color(0xFF141B1B),
+                fontSize: 16.0,
+                fontWeight: FontWeight.w400,
+                color: Colors.white70,
               ),
             ),
-            IconButton(
-              icon: Icon(Icons.info),
-              onPressed: () {
+            PixelButton(
+              text: 'about', 
+              backgroundColor: Colors.black45,
+              fontColor: Colors.grey,
+              fontSize: 16.0,
+              context: context,
+              withShadow: false,
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -65,28 +71,27 @@ class _ActorSelectionState extends State<ActorSelection> {
       margin: EdgeInsets.all(28),
       child: Center(
         child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            if (constraints.maxWidth > 600) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _gameTitle(context),
-                  SizedBox(width: 36),
-                  _selectActor(context),
-                ],
-              );
-            }else{
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _gameTitle(context),
-                  _selectActor(context),
-                  SizedBox(height: 8),
-                ],
-              );
-            }
+            builder: (BuildContext context, BoxConstraints constraints) {
+          if (constraints.maxWidth > 800) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _gameTitle(context),
+                SizedBox(width: 64),
+                _selectActor(context),
+              ],
+            );
+          } else {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _gameTitle(context),
+                _selectActor(context),
+                SizedBox(height: 8),
+              ],
+            );
           }
-        ),
+        }),
       ),
     );
   }
@@ -106,9 +111,11 @@ class _ActorSelectionState extends State<ActorSelection> {
             ),
           ),
           SizedBox(height: 36),
-          ElevatedButton(
-            child: Text('Play'),
-            onPressed: () {
+          PixelButton(
+            text: 'Play',
+            context: context,
+            withAnimation: true,
+            onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
