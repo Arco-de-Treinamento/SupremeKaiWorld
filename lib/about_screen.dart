@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:supreme_kai_world/util/pixel_button.dart';
-import 'package:supreme_kai_world/util/github_button.dart';
-
 
 class AboutGame extends StatefulWidget {
   @override
@@ -9,20 +8,20 @@ class AboutGame extends StatefulWidget {
 }
 
 class _AboutGameState extends State<AboutGame> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF686557),
+      backgroundColor: const Color(0xFF686557),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        centerTitle: true,
         elevation: 0,
-        title: Text(
+        title: const Text(
           'Sobre este projeto',
           style: TextStyle(
             fontFamily: 'PixelifySans',
             fontSize: 28.0,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w500,
             color: Colors.white70,
           ),
         ),
@@ -30,27 +29,15 @@ class _AboutGameState extends State<AboutGame> {
       body: Stack(
         children: [
           Container(
-            margin: EdgeInsets.all(28),
+            margin: const EdgeInsets.all(28),
             child: Center(
-              child: Column(
-                children: [
-                  Text(
-                    'Assets criados por Pixel-boy, disponíveis na itch.io com o título de "Ninja Adventure Asset Pack", sob a licença Creative Commons Zero (CC0).',
-                    style: TextStyle(
-                      fontFamily: 'PixelifySans',
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white70,
-                    ),
-                  ),
-                  SizedBox(height: 16.0),
-                  Container(
-                    height: 36,
-                    child: Image.asset(
-                      'assets/images/cc-zero.png'
-                    ),
-                  )
-                ],
+              child: LicenseWidget(
+                title: 'Ninja Adventure Asset Pack',
+                menssage:
+                    'Assets criados por Pixel-Boy e AAA disponíveis na itch.io, sob licença Creative Commons Zero (CC0).',
+                licenseTagPath: 'assets/images/tags/cc-zero.png',
+                repoLink:
+                    'https://pixel-boy.itch.io/ninja-adventure-asset-pack',
               ),
             ),
           ),
@@ -60,4 +47,82 @@ class _AboutGameState extends State<AboutGame> {
   }
 }
 
+class LicenseWidget extends StatelessWidget {
+  const LicenseWidget({
+    super.key,
+    required this.menssage,
+    required this.licenseTagPath,
+    required this.repoLink,
+    required this.title,
+  });
 
+  final String title;
+  final String menssage;
+  final String licenseTagPath;
+  final String repoLink;
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 600),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontFamily: 'PixelifySans',
+              fontSize: 22.0,
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 16.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                child: Text(
+                  menssage,
+                  style: const TextStyle(
+                    fontFamily: 'PixelifySans',
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.white70,
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 16.0),
+                height: 36,
+                child: Image.asset(licenseTagPath),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              PixelButton(
+                text: 'Ir para a página',
+                backgroundColor: Colors.black45,
+                fontColor: Colors.white,
+                fontSize: 14.0,
+                context: context,
+                withShadow: false,
+                onTap: () =>_laucherURL(repoLink),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+Future<void> _laucherURL (String url) async {
+  if (!await launchUrl(Uri.parse(url))) {
+    throw Exception('Could not launch $url');
+  }
+}
