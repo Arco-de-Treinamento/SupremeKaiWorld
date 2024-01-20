@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:supreme_kai_world/game.dart';
+import 'package:supreme_kai_world/util/laucher_link.dart';
 
 class GitHubButton extends StatelessWidget {
   const GitHubButton({
@@ -16,15 +16,7 @@ class GitHubButton extends StatelessWidget {
       right: 0,
       child: InkWell(
         hoverColor: Colors.transparent,
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  Game(actorType: 'cave_girl'),
-            ),
-          );
-        },
+        onTap: () => laucherLink('https://github.com/Arco-de-Treinamento/SupremeKaiWorld'),
         child: SizedBox(
           height: 64,
           width: 64,

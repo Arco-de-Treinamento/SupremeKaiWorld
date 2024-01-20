@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:supreme_kai_world/util/laucher_link.dart';
 import 'package:supreme_kai_world/util/pixel_button.dart';
 
 class LicenseWidget extends StatelessWidget {
@@ -67,18 +67,12 @@ class LicenseWidget extends StatelessWidget {
                 fontSize: 14.0,
                 context: context,
                 withShadow: false,
-                onTap: () => _laucherURL(repoLink),
+                onTap: () => laucherLink(repoLink),
               ),
             ],
           ),
         ],
       ),
     );
-  }
-}
-
-Future<void> _laucherURL(String url) async {
-  if (!await launchUrl(Uri.parse(url))) {
-    throw Exception('Could not launch $url');
   }
 }
