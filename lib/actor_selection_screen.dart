@@ -5,6 +5,8 @@ import 'package:supreme_kai_world/util/github_button.dart';
 import 'package:supreme_kai_world/util/pixel_button.dart';
 import 'package:supreme_kai_world/about_screen.dart';
 
+import 'package:supreme_kai_world/util/sprite_button.dart';
+
 class ActorSelection extends StatefulWidget {
   @override
   _ActorSelectionState createState() => _ActorSelectionState();
@@ -137,24 +139,34 @@ class _ActorSelectionState extends State<ActorSelection> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
+          SpriteButton(
+            imagePath: 'assets/images/items/arrow.png',
+            context: context,
+            heightSprite: 40.42,
+            widthSprite: 40.42,
+            flipHorizontal: true,
+            onTap: () {
               setState(() {
-                if (_currentActorIndex > 0) {
-                  _currentActorIndex--;
+                if (_currentActorIndex <= 0) {
+                  _currentActorIndex = _actors.length;
                 }
+                _currentActorIndex--;
               });
             },
           ),
           ActorCard(actor: _actors[_currentActorIndex], context: context),
-          IconButton(
-            icon: const Icon(Icons.arrow_forward),
-            onPressed: () {
+          SizedBox(width: 8.0),
+          SpriteButton(
+            imagePath: 'assets/images/items/arrow.png',
+            context: context,
+            heightSprite: 40.42,
+            widthSprite: 40.42,
+            onTap: () {
               setState(() {
-                if (_currentActorIndex < _actors.length - 1) {
-                  _currentActorIndex++;
+                if (_currentActorIndex >= _actors.length - 1) {
+                  _currentActorIndex = -1;
                 }
+                _currentActorIndex++;
               });
             },
           ),
