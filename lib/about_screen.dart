@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supreme_kai_world/util/license_widget.dart';
-import 'package:supreme_kai_world/util/pixel_button.dart';
+import 'package:supreme_kai_world/util/sprite_button.dart';
 
 class AboutGame extends StatefulWidget {
   @override
@@ -16,16 +16,16 @@ class _AboutGameState extends State<AboutGame> {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         elevation: 0,
-        leading: PixelButton(
-          text: '<',
-          backgroundColor: Colors.black45,
-          fontColor: Colors.white,
-          fontSize: 14.0,
+        leading: SpriteButton(
+          imagePath: 'assets/images/items/arrow.png',
           context: context,
-          withShadow: false,
+          heightSprite: 24,
+          widthSprite: 24,
+          borderSize: 12,
+          flipHorizontal: true,
           onTap: () {
-            Navigator.pop(context);
-          },
+          Navigator.pop(context);
+          },    
         ),
         title: const Text(
           'Sobre este projeto',
