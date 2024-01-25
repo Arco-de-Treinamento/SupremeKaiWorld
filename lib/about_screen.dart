@@ -30,7 +30,7 @@ class _AboutGameState extends State<AboutGame> {
         ),
         title: Text(
           'Sobre este projeto',
-          style: GameTextStyle.bodyTextLarge.primary,
+          style: GameTextStyle.titleLarge.primary,
         ),
       ),
       body: SingleChildScrollView(

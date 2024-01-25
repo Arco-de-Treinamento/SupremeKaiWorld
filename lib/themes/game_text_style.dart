@@ -1,161 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:supreme_kai_world/themes/game_palette.dart';
 
-class _TitleLargeStyle {
-  TextStyle get primary => TextStyle(
-        fontSize: 28.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textPrimary,
-        fontWeight: FontWeight.w500,
-      );
+class _GameTextStyle {
+  final TextStyle _baseStyle;
+  final double _opacity;
 
-  TextStyle get secondary => TextStyle(
-        fontSize: 28.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textSecondary,
-        fontWeight: FontWeight.w500,
-      );
-}
+  const _GameTextStyle(this._baseStyle, {double opacity = 1.0})
+      : _opacity = opacity;
 
-class _TitleMediumStyle {
-  TextStyle get primary => TextStyle(
-        fontSize: 24.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textPrimary,
-        fontWeight: FontWeight.w500,
-      );
-
-  TextStyle get secondary => TextStyle(
-        fontSize: 24.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textSecondary,
-        fontWeight: FontWeight.w500,
-      );
-}
-
-class _TitleSmallStyle {
-  TextStyle get primary => TextStyle(
-        fontSize: 20.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textPrimary,
-        fontWeight: FontWeight.w500,
-      );
-
-  TextStyle get secondary => TextStyle(
-        fontSize: 20.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textSecondary,
-        fontWeight: FontWeight.w500,
-      );
-}
-
-class _BodyTextLargeStyle {
-  TextStyle get primary => TextStyle(
-        fontSize: 22.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textPrimary.withOpacity(0.7),
-        fontWeight: FontWeight.w300,
-      );
-
-  TextStyle get secondary => TextStyle(
-        fontSize: 22.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textSecondary.withOpacity(0.7),
-        fontWeight: FontWeight.w300,
-      );
-}
-
-class _BodyTextMediumStyle {
-  TextStyle get primary => TextStyle(
-        fontSize: 18.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textPrimary.withOpacity(0.7),
-        fontWeight: FontWeight.w300,
-      );
-
-  TextStyle get secondary => TextStyle(
-        fontSize: 18.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textSecondary.withOpacity(0.7),
-        fontWeight: FontWeight.w300,
-      );
-}
-
-class _BodyTextSmallStyle {
-  TextStyle get primary => TextStyle(
-        fontSize: 14.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textPrimary.withOpacity(0.7),
-        fontWeight: FontWeight.w300,
-      );
-
-  TextStyle get secondary => TextStyle(
-        fontSize: 14.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textSecondary.withOpacity(0.7),
-        fontWeight: FontWeight.w300,
-      );
-}
-
-class _ButtonLargeStyle {
-  TextStyle get primary => TextStyle(
-        fontSize: 28.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textPrimary,
-        fontWeight: FontWeight.w600,
-      );
-
-  TextStyle get secondary => TextStyle(
-        fontSize: 28.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textSecondary,
-        fontWeight: FontWeight.w600,
-      );
-}
-
-class _ButtonMediumStyle {
-  TextStyle get primary => TextStyle(
-        fontSize: 20.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textPrimary,
-        fontWeight: FontWeight.w600,
-      );
-
-  TextStyle get secondary => TextStyle(
-        fontSize: 20.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textSecondary,
-        fontWeight: FontWeight.w600,
-      );
-}
-
-class _ButtonSmallStyle {
-  TextStyle get primary => TextStyle(
-        fontSize: 14.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textPrimary,
-        fontWeight: FontWeight.w600,
-      );
-
-  TextStyle get secondary => TextStyle(
-        fontSize: 14.0,
-        fontFamily: 'PixelifySans',
-        color: GamePalette.textSecondary,
-        fontWeight: FontWeight.w600,
-      );
+  TextStyle get primary =>
+      _baseStyle.copyWith(color: GamePalette.textPrimary.withOpacity(_opacity));
+  TextStyle get secondary => 
+      _baseStyle.copyWith(color: GamePalette.textSecondary.withOpacity(_opacity));
 }
 
 /// A classe [GameTextStyle] define todas as fontes do game seguindo a [GamePalette] e utilizando a fonte 'PixelifySans'.
 class GameTextStyle {
-  static _TitleLargeStyle titleLarge = _TitleLargeStyle();
-  static _TitleMediumStyle titleMedium = _TitleMediumStyle();
-  static _TitleSmallStyle titleSmall = _TitleSmallStyle();
+  static TextStyle _baseStyle(
+          {double? fontSize, Color? color, FontWeight? fontWeight}) =>
+      TextStyle(
+        fontSize: fontSize,
+        fontFamily: 'PixelifySans',
+        color: color,
+        fontWeight: fontWeight,
+      );
 
-  static _BodyTextLargeStyle bodyTextLarge = _BodyTextLargeStyle();
-  static _BodyTextMediumStyle bodyTextMedium = _BodyTextMediumStyle();
-  static _BodyTextSmallStyle bodyTextSmall = _BodyTextSmallStyle();
+  static final _GameTextStyle titleLarge =
+      _GameTextStyle(_baseStyle(fontSize: 28.0, fontWeight: FontWeight.w500));
+  static final _GameTextStyle titleMedium =
+      _GameTextStyle(_baseStyle(fontSize: 24.0, fontWeight: FontWeight.w500));
+  static final _GameTextStyle titleSmall =
+      _GameTextStyle(_baseStyle(fontSize: 20.0, fontWeight: FontWeight.w500));
 
-  static _ButtonLargeStyle buttonLarge = _ButtonLargeStyle();
-  static _ButtonMediumStyle buttonMedium = _ButtonMediumStyle();
-  static _ButtonSmallStyle buttonSmall = _ButtonSmallStyle();
+  static final _GameTextStyle bodyTextLarge = _GameTextStyle(
+      _baseStyle(fontSize: 22.0, fontWeight: FontWeight.w300), opacity: 0.7);
+  static final _GameTextStyle bodyTextMedium = _GameTextStyle(
+      _baseStyle(fontSize: 18.0, fontWeight: FontWeight.w300), opacity: 0.7);
+  static final _GameTextStyle bodyTextSmall = _GameTextStyle(
+      _baseStyle(fontSize: 14.0, fontWeight: FontWeight.w300), opacity: 0.7);
+
+  static final _GameTextStyle buttonLarge =
+      _GameTextStyle(_baseStyle(fontSize: 28.0, fontWeight: FontWeight.w600));
+  static final _GameTextStyle buttonMedium =
+      _GameTextStyle(_baseStyle(fontSize: 20.0, fontWeight: FontWeight.w600));
+  static final _GameTextStyle buttonSmall =
+      _GameTextStyle(_baseStyle(fontSize: 14.0, fontWeight: FontWeight.w600));
 }
