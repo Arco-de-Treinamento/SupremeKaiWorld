@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supreme_kai_world/themes/game_text_style.dart';
 import 'package:supreme_kai_world/util/license_widget.dart';
 import 'package:supreme_kai_world/util/sprite_button.dart';
 
@@ -27,14 +28,9 @@ class _AboutGameState extends State<AboutGame> {
           Navigator.pop(context);
           },    
         ),
-        title: const Text(
+        title: Text(
           'Sobre este projeto',
-          style: TextStyle(
-            fontFamily: 'PixelifySans',
-            fontSize: 28.0,
-            fontWeight: FontWeight.w500,
-            color: Colors.white70,
-          ),
+          style: GameTextStyle.bodyTextLarge.primary,
         ),
       ),
       body: SingleChildScrollView(
