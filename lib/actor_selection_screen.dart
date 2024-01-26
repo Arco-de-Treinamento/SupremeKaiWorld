@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:supreme_kai_world/actor/actor_card.dart';
 import 'package:supreme_kai_world/game.dart';
 import 'package:supreme_kai_world/util/github_button.dart';
-import 'package:supreme_kai_world/util/pixel_button.dart';
+import 'package:supreme_kai_world/util/retrotext_button.dart';
 import 'package:supreme_kai_world/about_screen.dart';
-
+import 'package:supreme_kai_world/themes/game_palette.dart';
+import 'package:supreme_kai_world/themes/game_text_style.dart';
 import 'package:supreme_kai_world/util/sprite_button.dart';
 
 class ActorSelection extends StatefulWidget {
@@ -25,7 +26,7 @@ class _ActorSelectionState extends State<ActorSelection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF686557),
+      backgroundColor: GamePalette.background,
       body: Stack(
         children: [
           _titleScreen(),
@@ -47,12 +48,10 @@ class _ActorSelectionState extends State<ActorSelection> {
                 color: Colors.white70,
               ),
             ),
-            PixelButton(
-              text: 'about',
-              backgroundColor: Colors.black45,
-              fontColor: Colors.grey,
-              fontSize: 16.0,
-              context: context,
+            RetroTextButton(
+              'about',
+              backgroundColor: GamePalette.secondary,
+              textStyle: GameTextStyle.buttonSmall.primary,
               withShadow: false,
               onTap: () {
                 Navigator.push(
@@ -114,9 +113,10 @@ class _ActorSelectionState extends State<ActorSelection> {
             ),
           ),
           SizedBox(height: 36),
-          PixelButton(
-            text: 'Play',
-            context: context,
+          RetroTextButton(
+            'Play',
+            textStyle: GameTextStyle.buttonLarge.primary,
+            backgroundColor: GamePalette.secondary,
             withAnimation: true,
             onTap: () {
               Navigator.push(

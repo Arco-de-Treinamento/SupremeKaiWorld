@@ -1,34 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:supreme_kai_world/themes/game_palette.dart';
 
-class PixelButton extends StatefulWidget {
-  const PixelButton({
+class RetroTextButton extends StatefulWidget {
+  const RetroTextButton(
+    this.text, {
     super.key,
-    this.backgroundColor = Colors.black,
-    required this.text,
-    this.fontSize = 28.0,
+    required this.textStyle,
     required this.onTap,
-    this.fontColor = Colors.white,
-    this.fontWeight = FontWeight.w600,
-    required this.context,
+    this.shadowOffset = 8.0,
+    this.verticalPadding = 0.0,
+    this.horizontalPadding = 16.0,
+    this.animationDuration = 100,
+    this.backgroundColor = GamePalette.primary,
     this.withAnimation = false,
     this.withShadow = true,
   });
 
-  final Color backgroundColor;
-  final Color fontColor;
-  final FontWeight fontWeight;
   final String text;
-  final double fontSize;
+  final TextStyle textStyle;
   final VoidCallback onTap;
-  final BuildContext context;
+  final double shadowOffset;
+  final double verticalPadding;
+  final double horizontalPadding;
+  final int animationDuration;
+  final Color backgroundColor;
   final bool withAnimation;
   final bool withShadow;
 
   @override
-  State<PixelButton> createState() => _PixelButtonState();
+  State<RetroTextButton> createState() => _RetroTextButtonState();
 }
 
-class _PixelButtonState extends State<PixelButton>
+class _RetroTextButtonState extends State<RetroTextButton>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _animation;
@@ -37,11 +40,11 @@ class _PixelButtonState extends State<PixelButton>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 100),
+      duration: Duration(milliseconds: widget.animationDuration),
       vsync: this,
     );
 
-    _animation = Tween(begin: 0.0, end: 8.0).animate(_controller);
+    _animation = Tween(begin: 0.0, end: widget.shadowOffset).animate(_controller);
   }
 
   @override
@@ -53,17 +56,19 @@ class _PixelButtonState extends State<PixelButton>
         animation: _animation,
         builder: (_, child) {
           return Container(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+            padding: EdgeInsets.symmetric(
+                vertical: widget.verticalPadding,
+                horizontal: widget.horizontalPadding),
             decoration: BoxDecoration(
               color: widget.backgroundColor,
               boxShadow: [
                 widget.withShadow
                     ? BoxShadow(
-                        color: Colors.black.withOpacity(0.5),
+                        color: GamePalette.primaryShadow,
                         blurRadius: 0,
                         offset: widget.withAnimation
                             ? Offset(_animation.value, _animation.value)
-                            : const Offset(8, 8),
+                            : Offset(widget.shadowOffset, widget.shadowOffset),
                       )
                     : const BoxShadow(),
               ],
@@ -76,12 +81,7 @@ class _PixelButtonState extends State<PixelButton>
           onTap: widget.onTap,
           child: Text(
             widget.text,
-            style: TextStyle(
-              fontFamily: 'PixelifySans',
-              fontSize: widget.fontSize,
-              fontWeight: widget.fontWeight,
-              color: widget.fontColor,
-            ),
+            style: widget.textStyle,
           ),
         ),
       ),

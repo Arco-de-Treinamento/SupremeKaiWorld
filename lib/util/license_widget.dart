@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:supreme_kai_world/util/laucher_link.dart';
-import 'package:supreme_kai_world/util/pixel_button.dart';
+import 'package:supreme_kai_world/themes/game_text_style.dart';
+import 'package:supreme_kai_world/themes/game_palette.dart';
+import 'package:supreme_kai_world/util/retrotext_button.dart';
 
 class LicenseWidget extends StatelessWidget {
   const LicenseWidget({
@@ -60,12 +62,10 @@ class LicenseWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              PixelButton(
-                text: 'Ir para a página',
-                backgroundColor: Colors.black45,
-                fontColor: Colors.white,
-                fontSize: 14.0,
-                context: context,
+              RetroTextButton(
+                'Ir para a página',
+                backgroundColor: GamePalette.secondary,
+                textStyle: GameTextStyle.buttonSmall.primary,
                 withShadow: false,
                 onTap: () => laucherLink(repoLink),
               ),
