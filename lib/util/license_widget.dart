@@ -64,10 +64,10 @@ class LicenseWidget extends StatelessWidget {
             children: [
               RetroTextButton(
                 'Ir para a página',
-                backgroundColor: GamePalette.secondary,
+                buttonColor: GamePalette.secondary,
                 textStyle: GameTextStyle.buttonSmall.primary,
                 withShadow: false,
-                onTap: () => laucherLink(repoLink),
+                onPressed: () => laucherLink(repoLink),
               ),
             ],
           ),

@@ -18,15 +18,14 @@ class _AboutGameState extends State<AboutGame> {
         centerTitle: true,
         elevation: 0,
         leading: SpriteButton(
-          imagePath: 'assets/images/items/arrow.png',
-          context: context,
+          assetPath: 'assets/images/items/arrow.png',
           heightSprite: 24,
           widthSprite: 24,
-          borderSize: 12,
-          flipHorizontal: true,
-          onTap: () {
-          Navigator.pop(context);
-          },    
+          margin: 12,
+          isFlippedHorizontally: true,
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: Text(
           'Sobre este projeto',
@@ -71,4 +70,3 @@ class _AboutGameState extends State<AboutGame> {
     );
   }
 }
-

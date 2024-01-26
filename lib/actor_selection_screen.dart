@@ -50,10 +50,10 @@ class _ActorSelectionState extends State<ActorSelection> {
             ),
             RetroTextButton(
               'about',
-              backgroundColor: GamePalette.secondary,
+              buttonColor: GamePalette.secondary,
               textStyle: GameTextStyle.buttonSmall.primary,
               withShadow: false,
-              onTap: () {
+              onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -116,9 +116,9 @@ class _ActorSelectionState extends State<ActorSelection> {
           RetroTextButton(
             'Play',
             textStyle: GameTextStyle.buttonLarge.primary,
-            backgroundColor: GamePalette.secondary,
+            buttonColor: GamePalette.secondary,
             withAnimation: true,
-            onTap: () {
+            onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -140,12 +140,11 @@ class _ActorSelectionState extends State<ActorSelection> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SpriteButton(
-            imagePath: 'assets/images/items/arrow.png',
-            context: context,
+            assetPath: 'assets/images/items/arrow.png',
             heightSprite: 40.42,
             widthSprite: 40.42,
-            flipHorizontal: true,
-            onTap: () {
+            isFlippedHorizontally: true,
+            onPressed: () {
               setState(() {
                 if (_currentActorIndex <= 0) {
                   _currentActorIndex = _actors.length;
@@ -157,11 +156,10 @@ class _ActorSelectionState extends State<ActorSelection> {
           ActorCard(actor: _actors[_currentActorIndex], context: context),
           SizedBox(width: 8.0),
           SpriteButton(
-            imagePath: 'assets/images/items/arrow.png',
-            context: context,
+            assetPath: 'assets/images/items/arrow.png',
             heightSprite: 40.42,
             widthSprite: 40.42,
-            onTap: () {
+            onPressed: () {
               setState(() {
                 if (_currentActorIndex >= _actors.length - 1) {
                   _currentActorIndex = -1;
