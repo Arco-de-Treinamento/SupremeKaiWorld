@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:supreme_kai_world/util/sprite.dart';
 
 class SpriteButton extends StatefulWidget {
-  const SpriteButton({
+  const SpriteButton(
+    this.assetPath, {
     super.key,
     required this.onPressed,
-    required this.assetPath,
-    this.heightSprite = 16.0,
-    this.widthSprite = 16.0,
+    required this.heightSprite,
+    required this.widthSprite,
     this.margin = 4.0,
     this.isFlippedHorizontally = false,
     this.isFlippedVertically = false,
@@ -56,7 +56,11 @@ class _SpriteButtonState extends State<SpriteButton>
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(widget.margin),
-      child: GestureDetector(
+      child: InkWell(
+        hoverColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        focusColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         onTapDown: _handleTapDown,
         onTapUp: _handleTapUp,
         onTap: widget.onPressed,
