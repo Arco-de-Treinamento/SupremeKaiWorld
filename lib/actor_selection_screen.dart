@@ -30,7 +30,7 @@ class _ActorSelectionState extends State<ActorSelection> {
       body: Stack(
         children: [
           _titleScreen(),
-          GitHubButton(context: context),
+          const GitHubLinkButton(),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -140,7 +140,7 @@ class _ActorSelectionState extends State<ActorSelection> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SpriteButton(
-            assetPath: 'assets/images/items/arrow.png',
+            'assets/images/items/arrow.png',
             heightSprite: 40.42,
             widthSprite: 40.42,
             isFlippedHorizontally: true,
@@ -156,7 +156,7 @@ class _ActorSelectionState extends State<ActorSelection> {
           ActorCard(actor: _actors[_currentActorIndex], context: context),
           SizedBox(width: 8.0),
           SpriteButton(
-            assetPath: 'assets/images/items/arrow.png',
+            'assets/images/items/arrow.png',
             heightSprite: 40.42,
             widthSprite: 40.42,
             onPressed: () {

@@ -18,7 +18,7 @@ class _AboutGameState extends State<AboutGame> {
         centerTitle: true,
         elevation: 0,
         leading: SpriteButton(
-          assetPath: 'assets/images/items/arrow.png',
+          'assets/images/items/arrow.png',
           heightSprite: 24,
           widthSprite: 24,
           margin: 12,
