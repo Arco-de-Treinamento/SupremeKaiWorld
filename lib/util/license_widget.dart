@@ -67,7 +67,7 @@ class LicenseWidget extends StatelessWidget {
                 buttonColor: GamePalette.secondary,
                 textStyle: GameTextStyle.buttonSmall.primary,
                 withShadow: false,
-                onPressed: () => laucherWebLink(repoLink),
+                onPressed: () => launchWebLink(repoLink),
               ),
             ],
           ),

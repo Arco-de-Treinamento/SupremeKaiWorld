@@ -14,7 +14,7 @@ class GitHubLinkButton extends StatelessWidget {
       right: 0,
       child: SpriteButton(
         'assets/images/items/github.png',
-        onPressed: () => laucherWebLink(
+        onPressed: () => launchWebLink(
             'https://github.com/Arco-de-Treinamento/SupremeKaiWorld'),
         heightSprite: 64,
         widthSprite: 64,
