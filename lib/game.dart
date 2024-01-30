@@ -37,31 +37,31 @@ class Game extends StatelessWidget {
     );
   }
 
-
   Map<String, ObjectBuilder> iteractiveObjects(BuildContext context) {
     return {
-      'frog_statue': (p) => InteractiveDecoration(
+      'frog_statue': (p) => InteractiveGameDecoration(
             'decorations/frog_statue.png',
-            context: context,
-            textureSize: Vector2(32.0, 32.0),
-            onCollisionAction: () => {Navigator.pop(context)},
-            elementPosition: p.position,
+            spriteSize: Vector2(32.0, 32.0),
+            onPlayerCollisionStart: () => {Navigator.pop(context)},
+            decorationPosition: p.position,
+            amount: 5,
+            stepTime: 0.1,
           ),
-      'monk_statue': (p) => InteractiveDecoration(
-            'decorations/monk_statue.png',
-            context: context,
-            textureSize: Vector2(32.0, 32.0),
-            onCollisionAction: () => {debugPrint("entrou monge")},
-            elementPosition: p.position,
-            onCollisionEndAction: () => {debugPrint("saiu monge")}
-          ),
-      'warrior_statue': (p) => InteractiveDecoration(
+      'monk_statue': (p) => InteractiveGameDecoration(
+          'decorations/monk_statue.png',
+          spriteSize: Vector2(32.0, 32.0),
+          onPlayerCollisionStart: () => {debugPrint("entrou monge")},
+          decorationPosition: p.position,
+          onPlayerCollisionEnd: () => {debugPrint("saiu monge")},
+          amount: 5,
+          stepTime: 0.1),
+      'warrior_statue': (p) => InteractiveGameDecoration(
             'decorations/warrior_statue.png',
-            context: context,
             amount: 4,
-            textureSize: Vector2(32.0, 32.0),
-            onCollisionAction: () => {Navigator.pop(context)},
-            elementPosition: p.position,
+            spriteSize: Vector2(32.0, 32.0),
+            onPlayerCollisionStart: () => {Navigator.pop(context)},
+            decorationPosition: p.position,
+            stepTime: 0.1,
           ),
       'warrior_info': (p) => infoBoardDefault(context, p),
       'monk_info': (p) => infoBoardDefault(context, p),
@@ -69,15 +69,15 @@ class Game extends StatelessWidget {
     };
   }
 
-  InteractiveDecoration infoBoardDefault(BuildContext context, TiledObjectProperties p) {
-    return InteractiveDecoration(
+  InteractiveGameDecoration infoBoardDefault(
+      BuildContext context, TiledObjectProperties p) {
+    return InteractiveGameDecoration(
       'decorations/info_board.png',
-      context: context,
       amount: 4,
       stepTime: 0.3,
-      textureSize: Vector2(32.0, 32.0),
-      onCollisionAction: () => {debugPrint("info")},
-      elementPosition: p.position,
+      spriteSize: Vector2(32.0, 32.0),
+      onPlayerCollisionStart: () => {debugPrint("info")},
+      decorationPosition: p.position,
     );
   }
 }

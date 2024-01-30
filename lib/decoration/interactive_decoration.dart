@@ -3,43 +3,41 @@ import 'package:bonfire/bonfire.dart';
 import 'dart:async' as async;
 import 'package:supreme_kai_world/actor/actor.dart';
 
-class InteractiveDecoration extends GameDecoration {
-  Actor? actor;
-  final VoidCallback onCollisionAction;
-  VoidCallback? onCollisionEndAction;
-  final BuildContext context;
+/// A classe [InteractiveGameDecoration] define um decoration base que interage com o player.
+class InteractiveGameDecoration extends GameDecoration {
+  final VoidCallback onPlayerCollisionStart;
+  VoidCallback? onPlayerCollisionEnd;
   final int amount;
-  final Vector2 textureSize;
+  final Vector2 spriteSize;
   final double stepTime;
-  final Vector2 elementPosition;
+  final Vector2 decorationPosition;
 
-  InteractiveDecoration(String spritePath,
-      {required this.onCollisionAction,
-      required this.context,
-      this.amount = 5,
-      required this.textureSize,
-      this.stepTime = 0.1,
-      required this.elementPosition,
-      this.onCollisionEndAction,
-      this.actor})
-      : super.withAnimation(
+  InteractiveGameDecoration(
+    String spritePath, {
+    required this.onPlayerCollisionStart,
+    required this.amount,
+    required this.spriteSize,
+    required this.stepTime,
+    required this.decorationPosition,
+    this.onPlayerCollisionEnd,
+  }) : super.withAnimation(
           animation: SpriteAnimation.load(
             spritePath,
             SpriteAnimationData.sequenced(
               amount: amount,
               stepTime: stepTime,
-              textureSize: textureSize,
+              textureSize: spriteSize,
             ),
           ),
-          position: elementPosition,
-          size: textureSize,
+          position: decorationPosition,
+          size: spriteSize,
         );
 
   @override
   async.Future<void> onLoad() {
     add(
       RectangleHitbox(
-        size: textureSize,
+        size: spriteSize,
         isSolid: true,
       ),
     );
@@ -50,7 +48,7 @@ class InteractiveDecoration extends GameDecoration {
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
     if (other is Actor) {
-      onCollisionAction.call();
+      onPlayerCollisionStart.call();
     }
     super.onCollisionStart(intersectionPoints, other);
   }
@@ -58,7 +56,7 @@ class InteractiveDecoration extends GameDecoration {
   @override
   void onCollisionEnd(PositionComponent other) {
     if (other is Actor) {
-      onCollisionEndAction?.call();
+      onPlayerCollisionEnd?.call();
     }
     super.onCollisionEnd(other);
   }
