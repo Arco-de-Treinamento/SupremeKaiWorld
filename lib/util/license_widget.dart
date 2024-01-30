@@ -4,19 +4,20 @@ import 'package:supreme_kai_world/themes/game_text_style.dart';
 import 'package:supreme_kai_world/themes/game_palette.dart';
 import 'package:supreme_kai_world/util/retrotext_button.dart';
 
-class LicenseWidget extends StatelessWidget {
-  const LicenseWidget({
+/// A classe [LicenseInfoWidget] define o widget que comporta os creditos e licenças de assets usados no projeto.
+class LicenseInfoWidget extends StatelessWidget {
+  const LicenseInfoWidget(
+    this.licenseTitle, {
     super.key,
-    required this.menssage,
+    required this.licenseContent,
     required this.licenseTagPath,
-    required this.repoLink,
-    required this.title,
+    required this.repositoryLink,
   });
 
-  final String title;
-  final String menssage;
+  final String licenseTitle;
+  final String licenseContent;
   final String licenseTagPath;
-  final String repoLink;
+  final String repositoryLink;
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +27,8 @@ class LicenseWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            title,
-            style: const TextStyle(
-              fontFamily: 'PixelifySans',
-              fontSize: 22.0,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
-            ),
+            licenseTitle,
+            style: GameTextStyle.titleMedium.primary,
           ),
           const SizedBox(height: 16.0),
           Row(
@@ -41,14 +37,9 @@ class LicenseWidget extends StatelessWidget {
             children: [
               Flexible(
                 child: Text(
-                  menssage,
+                  licenseContent,
                   textAlign: TextAlign.justify,
-                  style: const TextStyle(
-                    fontFamily: 'PixelifySans',
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w300,
-                    color: Colors.white70,
-                  ),
+                  style: GameTextStyle.bodyTextMedium.primary,
                 ),
               ),
               Container(
@@ -67,7 +58,7 @@ class LicenseWidget extends StatelessWidget {
                 buttonColor: GamePalette.secondary,
                 textStyle: GameTextStyle.buttonSmall.primary,
                 withShadow: false,
-                onPressed: () => launchWebLink(repoLink),
+                onPressed: () => launchWebLink(repositoryLink),
               ),
             ],
           ),

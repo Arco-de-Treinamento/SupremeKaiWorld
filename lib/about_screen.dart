@@ -38,29 +38,29 @@ class _AboutGameState extends State<AboutGame> {
           child: const Center(
             child: Column(
               children: [
-                LicenseWidget(
-                  title: 'Ninja Adventure Asset Pack',
-                  menssage:
+                LicenseInfoWidget(
+                  'Ninja Adventure Asset Pack',
+                  licenseContent:
                       'Assets criados por Pixel-Boy e AAA disponíveis na itch.io, sob a licença Creative Commons Zero (CC0).',
                   licenseTagPath: 'assets/images/tags/cc-zero.png',
-                  repoLink:
+                  repositoryLink:
                       'https://pixel-boy.itch.io/ninja-adventure-asset-pack',
                 ),
                 SizedBox(height: 24.0),
-                LicenseWidget(
-                  title: 'Pixelify Sans',
-                  menssage:
+                LicenseInfoWidget(
+                  'Pixelify Sans',
+                  licenseContent:
                       'Fonte criada por Stefie Justprince/Typecalism Foundryline, disponível no Google Fonts e no GitHub, sob a licença OFL 1.1.',
                   licenseTagPath: 'assets/images/tags/OFL.png',
-                  repoLink: 'https://github.com/eifetx/Pixelify-Sans',
+                  repositoryLink: 'https://github.com/eifetx/Pixelify-Sans',
                 ),
                 SizedBox(height: 24.0),
-                LicenseWidget(
-                  title: 'Arco de Treinamento',
-                  menssage:
+                LicenseInfoWidget(
+                  'Arco de Treinamento',
+                  licenseContent:
                       'Esse projeto visa agrupar todos os projetos produzidos em cursos e certificações a fim de facilitar o seu acesso por terceiros. Esse jogo foi criado para funcionar como um portifólio interativo e utiliza os assets do "Ninja Adventure Asset Pack" e a fonte "Pixelify Sans". Esse projeto está sob licença MIT.',
                   licenseTagPath: 'assets/images/tags/MIT.png',
-                  repoLink: 'https://github.com/Arco-de-Treinamento',
+                  repositoryLink: 'https://github.com/Arco-de-Treinamento',
                 ),
               ],
             ),
