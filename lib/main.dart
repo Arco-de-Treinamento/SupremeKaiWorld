@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supreme_kai_world/themes/game_theme.dart';
-import 'package:supreme_kai_world/actor_selection_screen.dart';
+import 'package:supreme_kai_world/screens/actor_selection_screen.dart';
 
 void main() {
   runApp(const MyApp());
