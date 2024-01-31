@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:bonfire/bonfire.dart';
 import 'package:supreme_kai_world/actor/actor.dart';
 import 'package:supreme_kai_world/decoration/interactive_decoration.dart';
+import 'package:supreme_kai_world/decoration/info_decoration.dart';
 
 class Game extends StatelessWidget {
   final String actorType;
@@ -63,21 +64,18 @@ class Game extends StatelessWidget {
             decorationPosition: p.position,
             stepTime: 0.1,
           ),
-      'warrior_info': (p) => infoBoardDefault(context, p),
-      'monk_info': (p) => infoBoardDefault(context, p),
-      'frog_info': (p) => infoBoardDefault(context, p),
+      'warrior_info': (p) => InfoDecoration(
+        'warrior info placa',
+        decorationPosition: p.position,
+      ),
+      'monk_info': (p) => InfoDecoration(
+        'monk info placa',
+        decorationPosition: p.position,
+      ),
+      'frog_info': (p) => InfoDecoration(
+        'frog info placa',
+        decorationPosition: p.position,
+      ),
     };
-  }
-
-  InteractiveGameDecoration infoBoardDefault(
-      BuildContext context, TiledObjectProperties p) {
-    return InteractiveGameDecoration(
-      'decorations/info_board.png',
-      amount: 4,
-      stepTime: 0.3,
-      spriteSize: Vector2(32.0, 32.0),
-      onPlayerCollisionStart: () => {debugPrint("info")},
-      decorationPosition: p.position,
-    );
   }
 }
