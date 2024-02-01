@@ -5,7 +5,6 @@ import 'package:supreme_kai_world/themes/game_palette.dart';
 import 'package:supreme_kai_world/themes/game_text_style.dart';
 import 'package:supreme_kai_world/util/github_button.dart';
 import 'package:supreme_kai_world/util/retrotext_button.dart';
-import 'package:supreme_kai_world/util/sprite.dart';
 import 'package:supreme_kai_world/util/select_player_widget.dart';
 import 'package:supreme_kai_world/screens/about_screen.dart';
 import 'package:supreme_kai_world/maps/level_1/level.dart';
@@ -92,12 +91,15 @@ class _TitleScreenState extends State<TitleScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Sprite(
-          'assets/images/logo.png',
-          heightSprite: 195,
-          widthSprite: 512,
-        ),
-        const SizedBox(height: 24),
+        SizedBox(
+            width: MediaQuery.of(context).size.height * 0.6,
+            child: Image.asset(
+              'assets/images/logo.png',
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.none,
+            ),
+          ),
+        const SizedBox(height: 36),
         RetroTextButton(
           'Play',
           textStyle: GameTextStyle.buttonLarge.primary,
