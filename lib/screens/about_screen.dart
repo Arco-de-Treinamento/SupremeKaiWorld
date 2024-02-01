@@ -4,6 +4,8 @@ import 'package:supreme_kai_world/util/license_widget.dart';
 import 'package:supreme_kai_world/util/sprite_button.dart';
 
 class AboutGame extends StatefulWidget {
+  const AboutGame({super.key});
+
   @override
   _AboutGameState createState() => _AboutGameState();
 }
