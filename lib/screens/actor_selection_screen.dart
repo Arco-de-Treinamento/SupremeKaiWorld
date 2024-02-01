@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:supreme_kai_world/actor/actor_card.dart';
-import 'package:supreme_kai_world/game.dart';
+import 'package:supreme_kai_world/maps/level_1/level.dart';
 import 'package:supreme_kai_world/util/github_button.dart';
 import 'package:supreme_kai_world/util/retrotext_button.dart';
-import 'package:supreme_kai_world/about_screen.dart';
+import 'package:supreme_kai_world/screens/about_screen.dart';
 import 'package:supreme_kai_world/themes/game_palette.dart';
 import 'package:supreme_kai_world/themes/game_text_style.dart';
-import 'package:supreme_kai_world/util/sprite_button.dart';
+import 'package:supreme_kai_world/util/select_player_widget.dart';
+import 'package:supreme_kai_world/util/sprite.dart';
 
 class ActorSelection extends StatefulWidget {
   @override
@@ -14,14 +14,7 @@ class ActorSelection extends StatefulWidget {
 }
 
 class _ActorSelectionState extends State<ActorSelection> {
-  final List<String> _actors = [
-    'cave_girl',
-    'inspector',
-    'princess',
-    'ninja',
-    'samurai'
-  ];
-  int _currentActorIndex = 0;
+  String _selectedActor = 'cave_girl';
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +63,7 @@ class _ActorSelectionState extends State<ActorSelection> {
 
   Container _titleScreen() {
     return Container(
-      margin: EdgeInsets.all(28),
+      margin: const EdgeInsets.all(28),
       child: Center(
         child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
@@ -79,8 +72,10 @@ class _ActorSelectionState extends State<ActorSelection> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _gameTitle(context),
-                SizedBox(width: 64),
-                _selectActor(context),
+                const SizedBox(width: 64),
+                SelectPlayerWidget(onActorSelected: (actor) {
+                  _selectedActor = actor;
+                }),
               ],
             );
           } else {
@@ -88,8 +83,12 @@ class _ActorSelectionState extends State<ActorSelection> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _gameTitle(context),
-                _selectActor(context),
-                SizedBox(height: 8),
+                SelectPlayerWidget(
+                  onActorSelected: (actor) {
+                    _selectedActor = actor;
+                  },
+                ),
+                const SizedBox(height: 8),
               ],
             );
           }
@@ -104,13 +103,10 @@ class _ActorSelectionState extends State<ActorSelection> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
-            width: 512,
-            child: Image.asset(
-              'assets/images/logo.png',
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.none,
-            ),
+          Sprite(
+            'assets/images/logo.png',
+            heightSprite: 204,
+            widthSprite: 512,
           ),
           SizedBox(height: 36),
           RetroTextButton(
@@ -122,50 +118,9 @@ class _ActorSelectionState extends State<ActorSelection> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>
-                      Game(actorType: _actors[_currentActorIndex]),
+                  builder: (context) => Level(actorType: _selectedActor),
                 ),
               );
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
-  Container _selectActor(BuildContext context) {
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SpriteButton(
-            'assets/images/items/arrow.png',
-            heightSprite: 40.42,
-            widthSprite: 40.42,
-            isFlippedHorizontally: true,
-            onPressed: () {
-              setState(() {
-                if (_currentActorIndex <= 0) {
-                  _currentActorIndex = _actors.length;
-                }
-                _currentActorIndex--;
-              });
-            },
-          ),
-          ActorCard(actor: _actors[_currentActorIndex], context: context),
-          SizedBox(width: 8.0),
-          SpriteButton(
-            'assets/images/items/arrow.png',
-            heightSprite: 40.42,
-            widthSprite: 40.42,
-            onPressed: () {
-              setState(() {
-                if (_currentActorIndex >= _actors.length - 1) {
-                  _currentActorIndex = -1;
-                }
-                _currentActorIndex++;
-              });
             },
           ),
         ],
