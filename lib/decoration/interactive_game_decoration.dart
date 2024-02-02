@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bonfire/bonfire.dart';
 import 'dart:async' as async;
-import 'package:supreme_kai_world/actor/actor.dart';
+import 'package:supreme_kai_world/actor/avatar.dart';
 
 /// A classe [InteractiveGameDecoration] define um decoration base que interage com o player.
 class InteractiveGameDecoration extends GameDecoration {
@@ -47,7 +47,7 @@ class InteractiveGameDecoration extends GameDecoration {
   @override
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
-    if (other is Actor) {
+    if (other is Avatar) {
       onPlayerCollisionStart.call();
     }
     super.onCollisionStart(intersectionPoints, other);
@@ -55,7 +55,7 @@ class InteractiveGameDecoration extends GameDecoration {
 
   @override
   void onCollisionEnd(PositionComponent other) {
-    if (other is Actor) {
+    if (other is Avatar) {
       onPlayerCollisionEnd?.call();
     }
     super.onCollisionEnd(other);

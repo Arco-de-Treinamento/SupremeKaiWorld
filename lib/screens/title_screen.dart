@@ -17,7 +17,7 @@ class TitleScreen extends StatefulWidget {
 }
 
 class _TitleScreenState extends State<TitleScreen> {
-  String _selectedActor = 'cave_girl';
+  String _selectedAvatar = 'cave_girl';
   late PackageInfo _packageInfo;
 
   @override
@@ -61,7 +61,7 @@ class _TitleScreenState extends State<TitleScreen> {
                   const SizedBox(width: 64),
                   SelectPlayerWidget(
                     onActorSelected: (actor) {
-                      _selectedActor = actor;
+                      _selectedAvatar = actor;
                     },
                   ),
                 ],
@@ -73,7 +73,7 @@ class _TitleScreenState extends State<TitleScreen> {
                   gameTitle(context),
                   SelectPlayerWidget(
                     onActorSelected: (actor) {
-                      _selectedActor = actor;
+                      _selectedAvatar = actor;
                     },
                   ),
                   const SizedBox(height: 8),
@@ -92,13 +92,13 @@ class _TitleScreenState extends State<TitleScreen> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
-            width: MediaQuery.of(context).size.height * 0.6,
-            child: Image.asset(
-              'assets/images/logo.png',
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.none,
-            ),
+          width: MediaQuery.of(context).size.height * 0.6,
+          child: Image.asset(
+            'assets/images/logo.png',
+            fit: BoxFit.cover,
+            filterQuality: FilterQuality.none,
           ),
+        ),
         const SizedBox(height: 36),
         RetroTextButton(
           'Play',
@@ -109,7 +109,7 @@ class _TitleScreenState extends State<TitleScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => Level(actorType: _selectedActor),
+                builder: (context) => Level(avatarType: _selectedAvatar),
               ),
             );
           },

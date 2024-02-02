@@ -38,7 +38,8 @@ class _SelectPlayerWidgetState extends State<SelectPlayerWidget> {
           isFlippedHorizontally: true,
           onPressed: selectPreviousPlayer,
         ),
-        ActorCard(actor: _actors[_currentActorIndex], context: context),
+        AvatarCard(
+            avatarFaceset: _actors[_currentActorIndex]),
         const SizedBox(width: 8.0),
         SpriteButton(
           'assets/images/items/arrow.png',
