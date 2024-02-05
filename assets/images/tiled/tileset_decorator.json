@@ -7,11 +7,11 @@
          "target":"map.json"
         }
     },
- "image":"tilesets\/tilese_decorator.png",
+ "image":"tilesets\/tileset_decorator.png",
  "imageheight":128,
  "imagewidth":128,
  "margin":0,
- "name":"tilese_decorator",
+ "name":"tileset_decorator",
  "spacing":0,
  "tilecount":64,
  "tiledversion":"1.10.2",
