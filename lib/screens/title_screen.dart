@@ -7,7 +7,7 @@ import 'package:supreme_kai_world/util/github_button.dart';
 import 'package:supreme_kai_world/util/retrotext_button.dart';
 import 'package:supreme_kai_world/util/select_player_widget.dart';
 import 'package:supreme_kai_world/screens/about_screen.dart';
-import 'package:supreme_kai_world/maps/level_1/level.dart';
+import 'package:supreme_kai_world/maps/level_main/level_main.dart';
 
 class TitleScreen extends StatefulWidget {
   const TitleScreen({super.key});
@@ -109,7 +109,7 @@ class _TitleScreenState extends State<TitleScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => Level(avatarType: _selectedAvatar),
+                builder: (context) => LevelMain(avatarType: _selectedAvatar),
               ),
             );
           },

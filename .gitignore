@@ -39,8 +39,8 @@ build/
 
 #Tiled
 *.tmx
-*.tiled-project
-*.tiled-session
+*json.tiled-project
+*json.tiled-session
 
 #Linux files
 linux/

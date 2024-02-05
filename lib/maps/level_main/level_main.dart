@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:bonfire/bonfire.dart';
 import 'package:supreme_kai_world/actor/avatar.dart';
-import 'package:supreme_kai_world/maps/level_1/level_objects.dart';
+import 'package:supreme_kai_world/maps/level_main/level_main_objects.dart';
 
-class Level extends StatelessWidget {
+class LevelMain extends StatelessWidget {
   final String avatarType;
 
-  const Level({super.key, required this.avatarType});
+  const LevelMain({super.key, required this.avatarType});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class Level extends StatelessWidget {
             ),
             map: WorldMapByTiled(
               TiledReader.asset('tiled/map.json'),
-              objectsBuilder: levelObjects(context),
+              objectsBuilder: levelMainObjects(context),
             ),
             player: Avatar(
               avatarType,
