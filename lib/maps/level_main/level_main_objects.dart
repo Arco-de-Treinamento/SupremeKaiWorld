@@ -3,6 +3,7 @@ import 'package:bonfire/tiled/builder/tiled_world_builder.dart';
 import 'package:supreme_kai_world/decoration/info_decoration.dart';
 import 'package:supreme_kai_world/decoration/statue_nav_decoration.dart';
 import 'package:supreme_kai_world/maps/level_frog/level_frog.dart';
+import 'package:supreme_kai_world/maps/level_warrior/level_warrior.dart';
 
 Map<String, ObjectBuilder> levelMainObjects(BuildContext context) {
   return {
@@ -25,7 +26,13 @@ Map<String, ObjectBuilder> levelMainObjects(BuildContext context) {
     'warrior_statue': (p) => StatueNavigationDecoration(
           'decorations/warrior_statue.png',
           decorationPosition: p.position,
-          navigationAction: () => {Navigator.pop(context)},
+          navigationAction: () => {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => LevelWarrior(avatarType: 'cave_girl')),
+            ),
+          },
         ),
     'warrior_info': (p) => InfoDecoration(
           'warrior info placa',
