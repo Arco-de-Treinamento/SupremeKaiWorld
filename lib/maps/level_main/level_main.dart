@@ -20,7 +20,7 @@ class LevelMain extends StatelessWidget {
             ),
             map: WorldMapByTiled(
               TiledReader.asset('tiled/map.json'),
-              objectsBuilder: levelMainObjects(context),
+              objectsBuilder: levelMainObjects(context, avatarType),
             ),
             player: Avatar(
               avatarType,

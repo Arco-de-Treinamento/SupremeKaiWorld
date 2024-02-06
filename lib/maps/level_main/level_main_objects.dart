@@ -5,7 +5,7 @@ import 'package:supreme_kai_world/decoration/statue_nav_decoration.dart';
 import 'package:supreme_kai_world/maps/level_frog/level_frog.dart';
 import 'package:supreme_kai_world/maps/level_warrior/level_warrior.dart';
 
-Map<String, ObjectBuilder> levelMainObjects(BuildContext context) {
+Map<String, ObjectBuilder> levelMainObjects(BuildContext context, String avatarType) {
   return {
     'frog_statue': (p) => StatueNavigationDecoration(
           'decorations/frog_statue.png',
@@ -14,7 +14,7 @@ Map<String, ObjectBuilder> levelMainObjects(BuildContext context) {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => LevelFrog(avatarType: 'cave_girl')),
+                  builder: (context) => LevelFrog(avatarType: avatarType)),
             ),
           },
         ),
@@ -30,7 +30,7 @@ Map<String, ObjectBuilder> levelMainObjects(BuildContext context) {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => LevelWarrior(avatarType: 'cave_girl')),
+                  builder: (context) => LevelWarrior(avatarType: avatarType)),
             ),
           },
         ),
