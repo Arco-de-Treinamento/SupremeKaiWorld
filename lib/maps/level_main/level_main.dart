@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:bonfire/bonfire.dart';
 import 'package:supreme_kai_world/actor/avatar.dart';
 import 'package:supreme_kai_world/maps/level_main/level_main_objects.dart';
+import 'package:supreme_kai_world/util/game_camera_config.dart';
 
 class LevelMain extends StatelessWidget {
   final String avatarType;
@@ -26,13 +27,7 @@ class LevelMain extends StatelessWidget {
               avatarType,
               avatarPosition: Vector2(400, 480),
             ),
-            cameraConfig: CameraConfig(
-              moveOnlyMapArea: true,
-              movementWindow: Vector2(36, 36),
-              speed: 2.0,
-              zoom: 3.5,
-              startFollowPlayer: true,
-            ),
+            cameraConfig: gameCameraConfig,
           ),
         ],
       ),
