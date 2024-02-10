@@ -1,7 +1,7 @@
 import 'dart:core';
 import 'dart:async' as async;
 import 'package:bonfire/bonfire.dart';
-import 'package:supreme_kai_world/actor/avatar_spritesheet.dart';
+import 'package:supreme_kai_world/avatar/avatar_spritesheet.dart';
 
 class Avatar extends SimplePlayer with BlockMovementCollision {
   late final AvatarSpriteSheet avatarSpriteSheet;
