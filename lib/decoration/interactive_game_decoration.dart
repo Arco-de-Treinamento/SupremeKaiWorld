@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bonfire/bonfire.dart';
 import 'dart:async' as async;
-import 'package:supreme_kai_world/actor/avatar.dart';
+import 'package:supreme_kai_world/avatar/avatar.dart';
 
 /// A classe [InteractiveGameDecoration] define um decoration base que interage com o player.
 class InteractiveGameDecoration extends GameDecoration {

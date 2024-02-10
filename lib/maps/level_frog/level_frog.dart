@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:bonfire/bonfire.dart';
-import 'package:supreme_kai_world/actor/avatar.dart';
+import 'package:supreme_kai_world/avatar/avatar.dart';
 import 'package:supreme_kai_world/maps/level_frog/level_frog_objects.dart';
 import 'package:supreme_kai_world/util/game_camera_config.dart';
+import 'package:supreme_kai_world/util/game_controls.dart';
 
 class LevelFrog extends StatelessWidget {
   final String avatarType;
@@ -16,9 +17,7 @@ class LevelFrog extends StatelessWidget {
         children: [
           BonfireWidget(
             showCollisionArea: false,
-            joystick: Joystick(
-              directional: JoystickDirectional(),
-            ),
+            joystick: GameControls(usePhysicsJoystick: true),
             map: WorldMapByTiled(
               TiledReader.asset('tiled/frog_map.json'),
               objectsBuilder: levelFrogObjects(context),

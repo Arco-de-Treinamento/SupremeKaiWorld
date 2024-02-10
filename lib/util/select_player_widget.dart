@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:supreme_kai_world/actor/actor_card.dart';
+import 'package:supreme_kai_world/avatar/avatar_card.dart';
 import 'package:supreme_kai_world/util/sprite_button.dart';
 
 class SelectPlayerWidget extends StatefulWidget {
