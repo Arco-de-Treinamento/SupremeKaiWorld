@@ -6,7 +6,7 @@
   Arco de Treinamento: Supreme Kai World
   <p align="center">
     <img src="https://img.shields.io/badge/Bonfire_%F0%9F%94%A5-Made_with?label=Made%20with&color=%23337fdc">
-<!--     <img src="https://img.shields.io/github/v/release/Arco-de-Treinamento/supreme_kai_world"><- Versao de lançamento-->
+    <img src="https://img.shields.io/github/v/release/Arco-de-Treinamento/supreme_kai_world">
     <img src="https://img.shields.io/github/last-commit/Arco-de-Treinamento/supreme_kai_world">
     <img src="https://img.shields.io/github/license/Arco-de-Treinamento/supreme_kai_world">
   </p>
@@ -33,7 +33,7 @@ Esse projeto visa agrupar todos os repositórios produzidos por mim ([JosManoel]
 </div>
 
 <div align="center"  width="80%">
-  <img src="media/title.png">
+  <img src="media/banner.png">
   <table>
     <tr>
       <td><img src="media/warrior_map.png" alt="Imagem 1"></td>
