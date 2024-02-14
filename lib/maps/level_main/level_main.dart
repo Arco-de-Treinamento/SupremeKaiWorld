@@ -5,6 +5,8 @@ import 'package:supreme_kai_world/maps/level_main/level_main_objects.dart';
 import 'package:supreme_kai_world/util/game_camera_config.dart';
 import 'package:supreme_kai_world/util/game_controls.dart';
 
+import 'package:supreme_kai_world/interface/game_hud.dart';
+
 class LevelMain extends StatelessWidget {
   final String avatarType;
 
@@ -16,6 +18,7 @@ class LevelMain extends StatelessWidget {
       child: Stack(
         children: [
           BonfireWidget(
+            interface: GameHud(),
             showCollisionArea: false,
             joystick: GameControls(usePhysicsJoystick: true),
             map: WorldMapByTiled(
