@@ -5,7 +5,7 @@ class GameHud extends GameInterface {
 
   @override
   Future<void> onLoad() async {
-    item = await Sprite.load('items/book.png');
+    item = await Sprite.load('items/letter.png');
     return super.onLoad();
   }
 
