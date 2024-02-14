@@ -18,6 +18,6 @@ class GameHud extends GameInterface {
   }
 
   void _drawItem(Canvas c) {
-      item.renderRect(c, Rect.fromLTWH(150, 20, 35, 30));
+      item.renderRect(c, Rect.fromLTWH(50, 20, 35, 30));
   }
 }
