@@ -9,7 +9,7 @@ class SwordComponent extends InterfaceComponent {
   SwordComponent()
       : super(
           id: 1,
-          position: Vector2(24, 24),
+          position: Vector2(24 + 58 + 12, 24),
           spriteUnselected: Sprite.load('HUD/sword_icon.png'),
           size: Vector2(64, 64),
         );
